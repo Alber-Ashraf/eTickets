@@ -5,26 +5,26 @@ namespace eTickets.Models
 {
     public class Movie
     {
-        public int movieId { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public double price { get; set; }
-        public string imageURL { get; set; }
-        public string startDate { get; set; }
-        public string endDate { get; set; }
-        public MovieCategory movieCategory { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public double Price { get; set; }
+        public string ImageURL { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public MovieCategory MovieCategory { get; set; }
 
         //Relationships
-        public List<Actor_Movie> actors_movies { get; set; }
+        public List<Actor_Movie> Actors_Movies { get; set; }
 
         //Cenima
-        public int cenimaId { get; set; }
-        [ForeignKey("cenimaId")]
-        public Cenima cenima { get; set; }
+        public int CenimaId { get; set; }
+        [ForeignKey("CenimaId")]
+        public Cenima Cenima { get; set; }
 
         //Producer
-        public int producerId { get; set; }
-        [ForeignKey("producerId")]
-        public Producer producer { get; set; }
+        public int ProducerId { get; set; }
+        [ForeignKey("ProducerId")]
+        public Producer Producer { get; set; }
     }
 }

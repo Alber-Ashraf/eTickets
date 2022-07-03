@@ -5,12 +5,12 @@ namespace eTickets.Models
     public class Cenima
     {
         [Key]
-        public int cenimaId { get; set; }
-        public string logo { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
+        public int Id { get; set; }
+        public string Logo { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
         //Relationships
-        public List<Movie> movies { get; set; }
+        public List<Movie> Movies { get; set; }
     }
 }

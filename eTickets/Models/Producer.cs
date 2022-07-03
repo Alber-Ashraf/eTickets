@@ -5,12 +5,12 @@ namespace eTickets.Models
     public class Producer
     {
         [Key]
-        public int producerId { get; set; }
-        public string profilePictureURL { get; set; }
-        public string fullName { get; set; }
-        public string bio { get; set; }
+        public int Id { get; set; }
+        public string ProfilePictureURL { get; set; }
+        public string FullName { get; set; }
+        public string Bio { get; set; }
 
         //Relationships
-        public List<Movie> movies { get; set; }
+        public List<Movie> Movies { get; set; }
     }
 }
