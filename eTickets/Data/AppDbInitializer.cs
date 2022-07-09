@@ -63,14 +63,14 @@ namespace eTickets.Data
                     {
                         new Actor()
                         {
-                            FullName = "Actor 1",
+                            FullName = "Actor 5",
                             Bio = "This is the Bio of the first actor",
                             ProfilePictureURL = "http://dotnethow.net/images/actors/actor-1.jpeg"
 
                         },
                         new Actor()
                         {
-                            FullName = "Actor 2",
+                            FullName = "Actor 4",
                             Bio = "This is the Bio of the second actor",
                             ProfilePictureURL = "http://dotnethow.net/images/actors/actor-2.jpeg"
                         },
@@ -82,13 +82,13 @@ namespace eTickets.Data
                         },
                         new Actor()
                         {
-                            FullName = "Actor 4",
+                            FullName = "Actor 2",
                             Bio = "This is the Bio of the second actor",
                             ProfilePictureURL = "http://dotnethow.net/images/actors/actor-4.jpeg"
                         },
                         new Actor()
                         {
-                            FullName = "Actor 5",
+                            FullName = "Actor 1",
                             Bio = "This is the Bio of the second actor",
                             ProfilePictureURL = "http://dotnethow.net/images/actors/actor-5.jpeg"
                         }
