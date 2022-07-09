@@ -1,5 +1,9 @@
 ﻿using eTickets.Data;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace eTickets.Controllers
 {
@@ -11,6 +15,7 @@ namespace eTickets.Controllers
         {
             _context = context;
         }
+
         public IActionResult Index()
         {
             var data = _context.Actors.ToList();

@@ -1,15 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace eTickets.Models
 {
-    public class Cenima
+    public class Cinema
     {
         [Key]
         public int Id { get; set; }
-        [Display(Name = "Logo")]
+
+        [Display(Name = "Cinema Logo")]
         public string Logo { get; set; }
-        [Display(Name = "Name")]
+        [Display(Name = "Cinema Name")]
         public string Name { get; set; }
+
         [Display(Name = "Description")]
         public string Description { get; set; }
 

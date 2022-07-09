@@ -1,12 +1,16 @@
-﻿using eTickets.Data.Enums;
-using System.Globalization;
-using eTickets.Models;
+﻿using eTickets.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace eTickets.Data
 {
-    public class AppDbInitioalizer
+    public class AppDbInitializer
     {
-        public static void seed(IApplicationBuilder applicationBuilder)
+        public static void Seed(IApplicationBuilder applicationBuilder)
         {
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
@@ -15,35 +19,35 @@ namespace eTickets.Data
                 context.Database.EnsureCreated();
 
                 //Cinema
-                if (!context.Cenimas.Any())
+                if (!context.Cinemas.Any())
                 {
-                    context.Cenimas.AddRange(new List<Cenima>()
+                    context.Cinemas.AddRange(new List<Cinema>()
                     {
-                        new Cenima()
+                        new Cinema()
                         {
                             Name = "Cinema 1",
                             Logo = "http://dotnethow.net/images/cinemas/cinema-1.jpeg",
                             Description = "This is the description of the first cinema"
                         },
-                        new Cenima()
+                        new Cinema()
                         {
                             Name = "Cinema 2",
                             Logo = "http://dotnethow.net/images/cinemas/cinema-2.jpeg",
                             Description = "This is the description of the first cinema"
                         },
-                        new Cenima()
+                        new Cinema()
                         {
                             Name = "Cinema 3",
                             Logo = "http://dotnethow.net/images/cinemas/cinema-3.jpeg",
                             Description = "This is the description of the first cinema"
                         },
-                        new Cenima()
+                        new Cinema()
                         {
                             Name = "Cinema 4",
                             Logo = "http://dotnethow.net/images/cinemas/cinema-4.jpeg",
                             Description = "This is the description of the first cinema"
                         },
-                        new Cenima()
+                        new Cinema()
                         {
                             Name = "Cinema 5",
                             Logo = "http://dotnethow.net/images/cinemas/cinema-5.jpeg",
@@ -52,46 +56,7 @@ namespace eTickets.Data
                     });
                     context.SaveChanges();
                 }
-                //Producer
-                if (!context.Producers.Any())
-                {
-                    context.Producers.AddRange(new List<Producer>()
-                    {
-                        new Producer()
-                        {
-                            FullName = "Producer 1",
-                            Bio = "This is the Bio of the first actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-1.jpeg"
-
-                        },
-                        new Producer()
-                        {
-                            FullName = "Producer 2",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-2.jpeg"
-                        },
-                        new Producer()
-                        {
-                            FullName = "Producer 3",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-3.jpeg"
-                        },
-                        new Producer()
-                        {
-                            FullName = "Producer 4",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-4.jpeg"
-                        },
-                        new Producer()
-                        {
-                            FullName = "Producer 5",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-5.jpeg"
-                        }
-                    });
-                    context.SaveChanges();
-                }
-                //Actor
+                //Actors
                 if (!context.Actors.Any())
                 {
                     context.Actors.AddRange(new List<Actor>()
@@ -130,7 +95,46 @@ namespace eTickets.Data
                     });
                     context.SaveChanges();
                 }
-                //Movie
+                //Producers
+                if (!context.Producers.Any())
+                {
+                    context.Producers.AddRange(new List<Producer>()
+                    {
+                        new Producer()
+                        {
+                            FullName = "Producer 1",
+                            Bio = "This is the Bio of the first actor",
+                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-1.jpeg"
+
+                        },
+                        new Producer()
+                        {
+                            FullName = "Producer 2",
+                            Bio = "This is the Bio of the second actor",
+                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-2.jpeg"
+                        },
+                        new Producer()
+                        {
+                            FullName = "Producer 3",
+                            Bio = "This is the Bio of the second actor",
+                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-3.jpeg"
+                        },
+                        new Producer()
+                        {
+                            FullName = "Producer 4",
+                            Bio = "This is the Bio of the second actor",
+                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-4.jpeg"
+                        },
+                        new Producer()
+                        {
+                            FullName = "Producer 5",
+                            Bio = "This is the Bio of the second actor",
+                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-5.jpeg"
+                        }
+                    });
+                    context.SaveChanges();
+                }
+                //Movies
                 if (!context.Movies.Any())
                 {
                     context.Movies.AddRange(new List<Movie>()
@@ -143,7 +147,7 @@ namespace eTickets.Data
                             ImageURL = "http://dotnethow.net/images/movies/movie-3.jpeg",
                             StartDate = DateTime.Now.AddDays(-10),
                             EndDate = DateTime.Now.AddDays(10),
-                            CenimaId = 3,
+                            CinemaId = 3,
                             ProducerId = 3,
                             MovieCategory = MovieCategory.Documentary
                         },
@@ -155,7 +159,7 @@ namespace eTickets.Data
                             ImageURL = "http://dotnethow.net/images/movies/movie-1.jpeg",
                             StartDate = DateTime.Now,
                             EndDate = DateTime.Now.AddDays(3),
-                            CenimaId = 1,
+                            CinemaId = 1,
                             ProducerId = 1,
                             MovieCategory = MovieCategory.Action
                         },
@@ -167,7 +171,7 @@ namespace eTickets.Data
                             ImageURL = "http://dotnethow.net/images/movies/movie-4.jpeg",
                             StartDate = DateTime.Now,
                             EndDate = DateTime.Now.AddDays(7),
-                            CenimaId = 4,
+                            CinemaId = 4,
                             ProducerId = 4,
                             MovieCategory = MovieCategory.Horror
                         },
@@ -179,7 +183,7 @@ namespace eTickets.Data
                             ImageURL = "http://dotnethow.net/images/movies/movie-6.jpeg",
                             StartDate = DateTime.Now.AddDays(-10),
                             EndDate = DateTime.Now.AddDays(-5),
-                            CenimaId = 1,
+                            CinemaId = 1,
                             ProducerId = 2,
                             MovieCategory = MovieCategory.Documentary
                         },
@@ -191,7 +195,7 @@ namespace eTickets.Data
                             ImageURL = "http://dotnethow.net/images/movies/movie-7.jpeg",
                             StartDate = DateTime.Now.AddDays(-10),
                             EndDate = DateTime.Now.AddDays(-2),
-                            CenimaId = 1,
+                            CinemaId = 1,
                             ProducerId = 3,
                             MovieCategory = MovieCategory.Cartoon
                         },
@@ -203,14 +207,14 @@ namespace eTickets.Data
                             ImageURL = "http://dotnethow.net/images/movies/movie-8.jpeg",
                             StartDate = DateTime.Now.AddDays(3),
                             EndDate = DateTime.Now.AddDays(20),
-                            CenimaId = 1,
+                            CinemaId = 1,
                             ProducerId = 5,
                             MovieCategory = MovieCategory.Drama
                         }
                     });
                     context.SaveChanges();
                 }
-                //Actor & Movie
+                //Actors & Movies
                 if (!context.Actors_Movies.Any())
                 {
                     context.Actors_Movies.AddRange(new List<Actor_Movie>()
@@ -312,6 +316,7 @@ namespace eTickets.Data
                     context.SaveChanges();
                 }
             }
+
         }
     }
 }
