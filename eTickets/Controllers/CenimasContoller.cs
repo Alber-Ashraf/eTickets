@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eTickets.Controllers
 {
-    public class CinemasContoller : Controller
+    public class CenimasContoller : Controller
     {
         private readonly AppDbContext _context;
 
-        public CinemasContoller(AppDbContext context)
+        public CenimasContoller(AppDbContext context)
         {
             _context = context;
         }
@@ -16,7 +16,7 @@ namespace eTickets.Controllers
         public async Task<IActionResult> Index()
         {
             var data = await _context.Cenimas.ToListAsync();
-            return View();
+            return View(data);
         }
     }
 }

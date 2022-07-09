@@ -14,7 +14,7 @@ namespace eTickets.Data
 
                 context.Database.EnsureCreated();
 
-                //Cenima
+                //Cinema
                 if (!context.Cenimas.Any())
                 {
                     context.Cenimas.AddRange(new List<Cenima>()
