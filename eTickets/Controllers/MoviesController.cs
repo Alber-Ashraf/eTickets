@@ -33,5 +33,12 @@ namespace eTickets.Controllers
             if (movieDetails == null) return View("NotFound");
             return View(movieDetails);
         }
+
+        //Get: Movies/Create
+
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
