@@ -25,7 +25,7 @@ namespace eTickets.Controllers
             return View(allCinemas);
         }
 
-        //Get: Actors/Create
+        //Get: Cinema/Create
         public IActionResult Create()
         {
             return View();
@@ -42,7 +42,7 @@ namespace eTickets.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        //Get: Actors/Details
+        //Get: Cinema/Details
         public async Task<IActionResult> Details(int id)
         {
             var cinemaDetails = await _service.GetByIdAsync(id);
@@ -51,7 +51,7 @@ namespace eTickets.Controllers
             return View(cinemaDetails);
         }
 
-        //Get: Actors/Edit
+        //Get: Cinema/Edit
         public async Task<IActionResult> Edit(int id)
         {
             var cinemaDetails = await _service.GetByIdAsync(id);
@@ -70,7 +70,7 @@ namespace eTickets.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        //Get: Actors/Delete
+        //Get: Cinema/Delete
         public async Task<IActionResult> Delete(int id)
         {
             var cinemaDetails = await _service.GetByIdAsync(id);
