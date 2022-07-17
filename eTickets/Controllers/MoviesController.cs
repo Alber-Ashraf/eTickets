@@ -1,5 +1,6 @@
 ﻿using eTickets.Data;
 using eTickets.Data.Services;
+using eTickets.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -41,11 +42,29 @@ namespace eTickets.Controllers
         {
             var movieDropDownsData = await _service.GetNewMovieDropdownsValues();
 
-            ViewBag.CinemaId = new SelectList(movieDropDownsData.Cinemas, "Id", "Name");
-            ViewBag.ProducerId = new SelectList(movieDropDownsData.Producers, "Id", "FullName");
-            ViewBag.ActorIds = new SelectList(movieDropDownsData.Actors, "Id", "FullName");
+            ViewBag.Cinemas = new SelectList(movieDropDownsData.Cinemas, "Id", "Name");
+            ViewBag.Producers = new SelectList(movieDropDownsData.Producers, "Id", "FullName");
+            ViewBag.Actors = new SelectList(movieDropDownsData.Actors, "Id", "FullName");
 
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(NewMovieVM movie)
+        {
+            if (!ModelState.IsValid)
+            {
+                var movieDropdownsData = await _service.GetNewMovieDropdownsValues();
+
+                ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
+                ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
+                ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "FullName");
+
+                return View(movie);
+            }
+
+            await _service.AddNewMovieAsync(movie);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
