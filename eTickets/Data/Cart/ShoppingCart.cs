@@ -1,5 +1,8 @@
 ﻿using eTickets.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,6 +19,17 @@ namespace eTickets.Data.Cart
         public ShoppingCart(AppDbContext context)
         {
             _context = context;
+        }
+
+        public static ShoppingCart GetShoppingCart(IServiceProvider Services)
+        {
+            ISession session = Services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+            var context = Services.GetService<AppDbContext>();
+
+            string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
+            session.SetString("CartId", cartId);
+
+            return new ShoppingCart(context) { ShoppingCartId = cartId };
         }
 
         //Add Item to Cart
@@ -41,7 +55,7 @@ namespace eTickets.Data.Cart
         }
 
         //Remove Item from cart
-        public void RemovetemFromCart(Movie movie)
+        public void RemoveItemFromCart(Movie movie)
         {
             var ShoppingCartItem = _context.ShoppingCartItems.FirstOrDefault(n => n.Movie.Id == movie.Id && n.ShoppingCartId == ShoppingCartId);
 
