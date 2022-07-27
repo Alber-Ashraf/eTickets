@@ -77,5 +77,13 @@ namespace eTickets.Controllers
             return View("RegisterComplete");
         }
 
+        [HttpPost]
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Movies");
+        }
+
     }
 }
