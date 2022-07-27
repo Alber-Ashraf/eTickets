@@ -47,5 +47,7 @@ namespace eTickets.Controllers
             TempData["Error"] = "Something went wrong. Please, try again!";
             return View(loginVM);
         }
+
+        public IActionResult Register() => View(new RegisterVM());
     }
 }
